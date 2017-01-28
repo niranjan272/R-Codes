@@ -2,6 +2,8 @@ library(class)
 library(gmodels)
 library(caret)
 library(ggplot2)
+library(e1071)
+
 #Read input file
 prc <- read.csv("C:\\Users\\Niranjan\\Documents\\R\\Prostate_Cancer.csv",stringsAsFactors = F)
 str(prc)
@@ -37,7 +39,7 @@ prc_test_pred <- knn(prc_train,prc_test,prc_train_lable,k= knn_value)
 
 #Evaluating knn
 CrossTable(x= prc_test_lable, y = prc_test_pred,prop.chisq = F)
-
+confusionMatrix(prc_test_pred,prc_test_lable)
 
 
 
